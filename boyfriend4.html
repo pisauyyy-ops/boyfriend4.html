@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For Ardi ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff416c,#ff4b8b,#7b2ff7);
+    color:white;
+}
+
+.page{
+    display:none;
+    height:100vh;
+    width:100%;
+    padding:20px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    animation:fade .5s;
+}
+
+.page.active{
+    display:flex;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:scale(.94);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.card{
+    width:100%;
+    max-width:420px;
+    padding:28px 20px;
+    border-radius:28px;
+    background:rgba(255,255,255,.16);
+    backdrop-filter:blur(12px);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+button{
+    border:0;
+    background:white;
+    color:#e83e68;
+    padding:13px 22px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:bold;
+    margin:6px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.option{
+    display:block;
+    width:90%;
+    margin:10px auto;
+}
+
+.bigHeart{
+    font-size:85px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+input{
+    width:90%;
+    padding:13px;
+    border:0;
+    border-radius:25px;
+    outline:none;
+    text-align:center;
+    margin:10px;
+}
+
+#heartGame{
+    position:relative;
+    width:100%;
+    height:280px;
+    border-radius:20px;
+    background:rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.flyingHeart{
+    position:absolute;
+    font-size:35px;
+    cursor:pointer;
+    animation:heartPop 1.4s linear;
+}
+
+@keyframes heartPop{
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+    to{
+        transform:scale(1.2);
+        opacity:1;
+    }
+}
+
+.memoryBox{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.memory{
+    height:90px;
+    border-radius:18px;
+    background:white;
+    color:#ff416c;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+    cursor:pointer;
+}
+
+.star{
+    font-size:50px;
+    cursor:pointer;
+    margin:5px;
+    display:inline-block;
+}
+
+.gift{
+    font-size:90px;
+    cursor:pointer;
+    animation:beat 1s infinite;
+}
+
+.progress{
+    width:100%;
+    height:17px;
+    background:rgba(255,255,255,.3);
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.bar{
+    width:0%;
+    height:100%;
+    background:white;
+    transition:.3s;
+}
+
+.puzzle{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin:15px 0;
+}
+
+.piece{
+    height:70px;
+    background:white;
+    color:#ff416c;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none;
+}
+
+.count{
+    font-size:55px;
+    font-weight:bold;
+}
+
+.fall{
+    position:fixed;
+    top:-40px;
+    pointer-events:none;
+    animation:fall linear forwards;
+    z-index:99;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.small{
+    font-size:13px;
+    opacity:.8;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- 1 -->
+<section class="page active" id="p1">
+<div class="card">
+    <div class="bigHeart">❤️</div>
+
+    <h1>For Ardi</h1>
+
+    <p>
+        Aku punya sesuatu yang kecil
+        tapi dibuat khusus buat kamu.
+    </p>
+
+    <button onclick="next()">Mulai 💗</button>
+</div>
+</section>
+
+
+<!-- 2 -->
+<section class="page" id="p2">
+<div class="card">
+
+    <h2>💌 Welcome, Ardi!</h2>
+
+    <p>
+        Selamat datang di game kecil
+        khusus Boyfriend Day.
+    </p>
+
+    <p>
+        Ada 20 halaman yang harus kamu lewati.
+        Berani sampai akhir?
+    </p>
+
+    <button onclick="next()">Aku berani 😎</button>
+
+</div>
+</section>
+
+
+<!-- 3 -->
+<section class="page" id="p3">
+<div class="card">
+
+    <h2>👋 Kenalan Dulu</h2>
+
+    <p>
+        Tulis nama kamu.
+    </p>
+
+    <input id="nameInput" placeholder="Nama kamu...">
+
+    <button onclick="saveName()">Lanjut ❤️</button>
+
+    <p id="nameResult"></p>
+
+</div>
+</section>
+
+
+<!-- 4 -->
+<section class="page" id="p4">
+<div class="card">
+
+    <h2>🥰 Pilih Emoji</h2>
+
+    <p>
+        Emoji mana yang paling menggambarkan kita?
+    </p>
+
+    <button onclick="emojiAnswer()">❤️</button>
+    <button onclick="emojiAnswer()">🥺</button>
+    <button onclick="emojiAnswer()">😂</button>
+    <button onclick="emojiAnswer()">🫶</button>
+
+    <p id="emojiResult"></p>
+
+</div>
+</section>
+
+
+<!-- 5 -->
+<section class="page" id="p5">
+<div class="card">
+
+    <h2>🧠 Tebak Kesukaan</h2>
+
+    <p>
+        Menurut kamu aku paling suka...
+    </p>
+
+    <button class="option" onclick="quiz5(false)">
+        Hadiah mahal 💸
+    </button>
+
+    <button class="option" onclick="quiz5(true)">
+        Perhatian kecil 🥺
+    </button>
+
+    <button class="option" onclick="quiz5(false)">
+        Barang mewah 💎
+    </button>
+
+    <p id="quiz5"></p>
+
+</div>
+</section>
+
+
+<!-- 6 -->
+<section class="page" id="p6">
+<div class="card">
+
+    <h2>🎯 Tangkap Hati!</h2>
+
+    <p>
+        Klik ❤️ sebanyak mungkin!
+    </p>
+
+    <h2 id="score">0 ❤️</h2>
+
+    <div id="heartGame"></div>
+
+    <button onclick="next()">Lanjut 💕</button>
+
+</div>
+</section>
+
+
+<!-- 7 -->
+<section class="page" id="p7">
+<div class="card">
+
+    <h2>🧩 Memory Game</h2>
+
+    <p>
+        Klik semua kotak untuk membuka simbol.
+    </p>
+
+    <div class="memoryBox">
+
+        <div class="memory" onclick="memory(this)">❤️</div>
+        <div class="memory" onclick="memory(this)">🌹</div>
+        <div class="memory" onclick="memory(this)">💌</div>
+        <div class="memory" onclick="memory(this)">⭐</div>
+
+    </div>
+
+    <p id="memoryText">0 / 4 terbuka</p>
+
+    <button id="memoryNext" class="hidden" onclick="next()">
+        Lanjut ✨
+    </button>
+
+</div>
+</section>
+
+
+<!-- 8 -->
+<section class="page" id="p8">
+<div class="card">
+
+    <h2>🎁 Pilih Hadiah</h2>
+
+    <p>
+        Kalau boleh pilih satu...
+    </p>
+
+    <button onclick="giftChoice()">🎁 Hadiah</button>
+
+    <button onclick="giftChoice()">💌 Surat</button>
+
+    <button onclick="giftChoice()">🌹 Bunga</button>
+
+    <p id="giftChoice"></p>
+
+</div>
+</section>
+
+
+<!-- 9 -->
+<section class="page" id="p9">
+<div class="card">
+
+    <h2>❤️ Love Quiz</h2>
+
+    <p>
+        Apa yang paling penting dalam hubungan?
+    </p>
+
+    <button class="option" onclick="loveQuiz()">
+        Saling percaya 🤝
+    </button>
+
+    <button class="option" onclick="loveQuiz()">
+        Saling memahami 🫶
+    </button>
+
+    <button class="option" onclick="loveQuiz()">
+        Saling menjaga ❤️
+    </button>
+
+    <p id="loveQuiz"></p>
+
+</div>
+</section>
+
+
+<!-- 10 -->
+<section class="page" id="p10">
+<div class="card">
+
+    <h2>⭐ Kumpulkan Bintang</h2>
+
+    <p>
+        Klik 5 bintang untuk membuka halaman berikutnya.
+    </p>
+
+    <div id="stars">
+
+        <span class="star" onclick="star(this)">⭐</span>
+        <span class="star" onclick="star(this)">⭐</span>
+        <span class="star" onclick="star(this)">⭐</span>
+        <span class="star" onclick="star(this)">⭐</span>
+        <span class="star" onclick="star(this)">⭐</span>
+
+    </div>
+
+    <p id="starCount">0 / 5</p>
+
+    <button id="starNext" class="hidden" onclick="next()">
+        Lanjut 🌟
+    </button>
+
+</div>
+</section>
+
+
+<!-- 11 -->
+<section class="page" id="p11">
+<div class="card">
+
+    <h2>🔐 Pesan Rahasia</h2>
+
+    <p>
+        Ada satu pesan yang selama ini
+        pengen aku bilang.
+    </p>
+
+    <button onclick="secret()">Buka 🔓</button>
+
+    <p id="secretText"></p>
+
+</div>
+</section>
+
+
+<!-- 12 -->
+<section class="page" id="p12">
+<div class="card">
+
+    <h2>🌹 Pilih Kencan</h2>
+
+    <p>
+        Kalau kita punya waktu seharian,
+        pilih yang mana?
+    </p>
+
+    <button class="option" onclick="dateChoice()">
+        🍿 Nonton bareng
+    </button>
+
+    <button class="option" onclick="dateChoice()">
+        🛵 Jalan-jalan
+    </button>
+
+    <button class="option" onclick="dateChoice()">
+        🍜 Makan bareng
+    </button>
+
+    <p id="dateResult"></p>
+
+</div>
+</section>
+
+
+<!-- 13 -->
+<section class="page" id="p13">
+<div class="card">
+
+    <h2>❤️ Love Meter</h2>
+
+    <p>
+        Isi sampai 100%.
+    </p>
+
+    <div class="progress">
+        <div class="bar" id="loveBar"></div>
+    </div>
+
+    <h2 id="lovePercent">0%</h2>
+
+    <button onclick="increaseLove()">
+        Tambah Love ❤️
+    </button>
+
+    <button id="loveNext" class="hidden" onclick="next()">
+        Lanjut 💕
+    </button>
+
+</div>
+</section>
+
+
+<!-- 14 -->
+<section class="page" id="p14">
+<div class="card">
+
+    <h2>🧩 Puzzle Hati</h2>
+
+    <p>
+        Klik semua bagian puzzle.
+    </p>
+
+    <div class="puzzle">
+
+        <div class="piece" onclick="piece(this)">❤️</div>
+        <div class="piece" onclick="piece(this)">💗</div>
+        <div class="piece" onclick="piece(this)">💖</div>
+        <div class="piece" onclick="piece(this)">💕</div>
+        <div class="piece" onclick="piece(this)">💓</div>
+        <div class="piece" onclick="piece(this)">💞</div>
+
+    </div>
+
+    <p id="pieceText">0 / 6</p>
+
+    <button id="pieceNext" class="hidden" onclick="next()">
+        Puzzle selesai 🎉
+    </button>
+
+</div>
+</section>
+
+
+<!-- 15 -->
+<section class="page" id="p15">
+<div class="card">
+
+    <h2>💗 Kenapa Aku Suka Kamu?</h2>
+
+    <p>
+        Jawabannya sederhana...
+    </p>
+
+    <p>
+        Karena kamu bisa membuat
+        hal-hal sederhana terasa spesial.
+    </p>
+
+    <button onclick="next()">Lanjut 🥺</button>
+
+</div>
+</section>
+
+
+<!-- 16 -->
+<section class="page" id="p16">
+<div class="card">
+
+    <h2>💌 Surat Kecil Untuk Ardi</h2>
+
+    <p>
+        Makasih sudah hadir di hidup aku.
+    </p>
+
+    <p>
+        Makasih untuk perhatian,
+        waktu, candaan, dan hal-hal kecil
+        yang mungkin menurut kamu biasa,
+        tapi berarti buat aku.
+    </p>
+
+    <p>
+        Aku senang bisa punya cerita
+        sama kamu. ❤️
+    </p>
+
+    <button onclick="next()">Lanjut 💕</button>
+
+</div>
+</section>
+
+
+<!-- 17 -->
+<section class="page" id="p17">
+<div class="card">
+
+    <h2>⏳ Menuju Surprise</h2>
+
+    <p>
+        Tunggu sampai hitungannya selesai...
+    </p>
+
+    <div class="count" id="count">5</div>
+
+    <p id="countText"></p>
+
+</div>
+</section>
+
+
+<!-- 18 -->
+<section class="page" id="p18">
+<div class="card">
+
+    <h2>🎁 Surprise!</h2>
+
+    <p>
+        Ada satu hadiah terakhir.
+    </p>
+
+    <div class="gift" onclick="openFinalGift()">
+        🎁
+    </div>
+
+    <p id="finalGift"></p>
+
+    <button id="giftNext" class="hidden" onclick="next()">
+        Buka halaman terakhir ❤️
+    </button>
+
+</div>
+</section>
+
+
+<!-- 19 -->
+<section class="page" id="p19">
+<div class="card">
+
+    <div class="bigHeart">💖</div>
+
+    <h2>Hampir Selesai...</h2>
+
+    <p>
+        Ardi, sebelum sampai akhir,
+        aku cuma mau bilang satu hal:
+    </p>
+
+    <p>
+        <b>Terima kasih sudah menjadi
+        seseorang yang berarti buat aku.</b>
+    </p>
+
+    <button onclick="next()">Lihat akhir 🎀</button>
+
+</div>
+</section>
+
+
+<!-- 20 -->
+<section class="page" id="p20">
+<div class="card">
+
+    <div class="bigHeart">❤️</div>
+
+    <h1>Happy Boyfriend Day!</h1>
+
+    <h2>Untuk Ardi 💗</h2>
+
+    <p>
+        Semoga kamu selalu ingat
+        kalau ada seseorang yang
+        menghargai keberadaan kamu.
+    </p>
+
+    <p>
+        I love you, Ardi. 🥺❤️
+    </p>
+
+    <button onclick="celebrate()">
+        Surprise Terakhir 🎉
+    </button>
+
+    <p id="ending"></p>
+
+</div>
+</section>
+
+
+<script>
+
+/* SISTEM HALAMAN */
+
+let page=1;
+
+function showPage(n){
+
+    document.querySelectorAll(".page").forEach(p=>{
+        p.classList.remove("active");
+    });
+
+    document.getElementById("p"+n).classList.add("active");
+
+    page=n;
+
+    if(n===17){
+        countdown();
+    }
+}
+
+function next(){
+
+    if(page<20){
+        showPage(page+1);
+    }
+}
+
+
+/* HALAMAN 3 */
+
+function saveName(){
+
+    let name=document.getElementById("nameInput").value;
+
+    if(name.trim()===""){
+        name="Ardi";
+    }
+
+    document.getElementById("nameResult").innerHTML=
+        "Halo "+name+" ❤️";
+
+    setTimeout(next,1000);
+}
+
+
+/* HALAMAN 4 */
+
+function emojiAnswer(){
+
+    document.getElementById("emojiResult").innerHTML=
+        "Apa pun emoji-nya, yang penting kita tetap saling sayang ❤️";
+
+    setTimeout(next,1100);
+}
+
+
+/* HALAMAN 5 */
+
+function quiz5(correct){
+
+    let text=document.getElementById("quiz5");
+
+    if(correct){
+
+        text.innerHTML=
+            "Benarrr! Aku memang lebih suka perhatian kecil 🥺❤️";
+
+        setTimeout(next,1200);
+
+    }else{
+
+        text.innerHTML=
+            "Hmm... bukan itu 😭 coba lagi.";
+
+    }
+}
+
+
+/* HALAMAN 6 */
+
+let score=0;
+
+function createHeart(){
+
+    if(page!==6) return;
+
+    let game=document.getElementById("heartGame");
+
+    let heart=document.createElement("span");
+
+    heart.className="flyingHeart";
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*85+"%";
+    heart.style.top=Math.random()*75+"%";
+
+    heart.onclick=function(){
+
+        score++;
+
+        document.getElementById("score").innerHTML=
+            score+" ❤️";
+
+        heart.remove();
+
+    };
+
+    game.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },1400);
+}
+
+setInterval(createHeart,650);
+
+
+/* HALAMAN 7 */
+
+let memoryCount=0;
+
+function memory(el){
+
+    if(el.dataset.clicked==="yes") return;
+
+    el.dataset.clicked="yes";
+
+    el.style.background="#ffd1dc";
+
+    memoryCount++;
+
+    document.getElementById("memoryText").innerHTML=
+        memoryCount+" / 4 terbuka";
+
+    if(memoryCount===4){
+
+        document.getElementById("memoryNext")
+        .classList.remove("hidden");
+
+    }
+}
+
+
+/* HALAMAN 8 */
+
+function giftChoice(){
+
+    document.getElementById("giftChoice").innerHTML=
+        "Pilihan yang bagus! Tapi hadiah sebenarnya adalah waktu dan perhatian. ❤️";
+
+    setTimeout(next,1300);
+}
+
+
+/* HALAMAN 9 */
+
+function loveQuiz(){
+
+    document.getElementById("loveQuiz").innerHTML=
+        "Semua jawaban benar 🥺❤️ Karena semuanya penting.";
+
+    setTimeout(next,1300);
+}
+
+
+/* HALAMAN 10 */
+
+let starCount=0;
+
+function star(el){
+
+    if(el.dataset.done==="yes") return;
+
+    el.dataset.done="yes";
+
+    el.style.visibility="hidden";
+
+    starCount++;
+
+    document.getElementById("starCount").innerHTML=
+        starCount+" / 5";
+
+    if(starCount===5){
+
+        document.getElementById("starCount").innerHTML=
+            "Semua bintang terkumpul! ⭐❤️";
+
+        document.getElementById("starNext")
+        .classList.remove("hidden");
+    }
+}
+
+
+/* HALAMAN 11 */
+
+function secret(){
+
+    document.getElementById("secretText").innerHTML=
+        "Psst... aku senang bisa punya kamu dalam cerita hidup aku. 🥺❤️";
+
+    setTimeout(next,1800);
+}
+
+
+/* HALAMAN 12 */
+
+function dateChoice(){
+
+    document.getElementById("dateResult").innerHTML=
+        "Yang penting bukan tempatnya, tapi sama siapa. ❤️";
+
+    setTimeout(next,1300);
+}
+
+
+/* HALAMAN 13 */
+
+let love=0;
+
+function increaseLove(){
+
+    if(love<100){
+
+        love+=10;
+
+        document.getElementById("loveBar").style.width=
+            love+"%";
+
+        document.getElementById("lovePercent").innerHTML=
+            love+"%";
+    }
+
+    if(love>=100){
+
+        document.getElementById("lovePercent").innerHTML=
+            "100% LOVE ❤️";
+
+        document.getElementById("loveNext")
+        .classList.remove("hidden");
+    }
+}
+
+
+/* HALAMAN 14 */
+
+let pieces=0;
+
+function piece(el){
+
+    if(el.dataset.done==="yes") return;
+
+    el.dataset.done="yes";
+
+    el.style.background="#ffd1dc";
+
+    pieces++;
+
+    document.getElementById("pieceText").innerHTML=
+        pieces+" / 6";
+
+    if(pieces===6){
+
+        document.getElementById("pieceText").innerHTML=
+            "Puzzle hati selesai! ❤️";
+
+        document.getElementById("pieceNext")
+        .classList.remove("hidden");
+    }
+}
+
+
+/* HALAMAN 17 */
+
+let timerStarted=false;
+
+function countdown(){
+
+    if(timerStarted) return;
+
+    timerStarted=true;
+
+    let number=5;
+
+    let counter=setInterval(()=>{
+
+        number--;
+
+        document.getElementById("count").innerHTML=
+            number;
+
+        if(number<=0){
+
+            clearInterval(counter);
+
+            document.getElementById("count").innerHTML=
+                "❤️";
+
+            document.getElementById("countText").innerHTML=
+                "Surprisenya sudah siap!";
+
+            setTimeout(next,1200);
+        }
+
+    },1000);
+}
+
+
+/* HALAMAN 18 */
+
+function openFinalGift(){
+
+    document.querySelector(".gift").style.display=
+        "none";
+
+    document.getElementById("finalGift").innerHTML=
+        "🎉 Hadiahnya adalah pesan ini: kamu adalah salah satu hal kecil yang membuat hariku lebih menyenangkan. ❤️";
+
+    document.getElementById("giftNext")
+        .classList.remove("hidden");
+}
+
+
+/* HALAMAN 20 */
+
+function celebrate(){
+
+    document.getElementById("ending").innerHTML=
+        "🎉 Surprise berhasil! Happy Boyfriend Day, Ardi! ❤️";
+
+    for(let i=0;i<60;i++){
+
+        let item=document.createElement("div");
+
+        item.className="fall";
+
+        item.innerHTML=
+            Math.random()>.5 ? "❤️" : "💖";
+
+        item.style.left=
+            Math.random()*100+"%";
+
+        item.style.fontSize=
+            (18+Math.random()*25)+"px";
+
+        item.style.animationDuration=
+            (2+Math.random()*3)+"s";
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+            item.remove();
+        },6000);
+    }
+}
+
+</script>
+
+</body>
+</html>
